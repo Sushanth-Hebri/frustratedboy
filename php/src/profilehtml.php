@@ -734,7 +734,7 @@ border: none;
     gap:30px;
 }
 .lis:hover{
-    background-color: red;
+    background-color: white;
          
          cursor: pointer;
        
