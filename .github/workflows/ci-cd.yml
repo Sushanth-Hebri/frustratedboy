@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Docker
         run: |
@@ -23,4 +23,4 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          NODE_VERSION: 14  # Specify the Node.js version here to suppress the warning
+          NODE_VERSION: 16  # Specify the Node.js version here to suppress the warning
