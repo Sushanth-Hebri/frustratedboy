@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto Carousel</title>
+  <style>
+    .auto {
+      position: relative;
+      width: 800px;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-inner {
+      display: flex;
+      width: 100%;
+    }
+
+    .carousel-item {
+      flex: 0 0 800px;
+      height: 300px;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="auto">
+    <div id="carouselExample" class="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="1.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img src="2.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img src="3.jpg" alt="Third slide">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code for auto carousel
+    var carousel = document.getElementById("carouselExample");
+    var carouselItems = carousel.getElementsByClassName("carousel-item");
+    var itemWidth = carouselItems[0].offsetWidth;
+    var currentIndex = 0;
+
+    function showSlide(index) {
+      var translateX = -index * itemWidth + "px";
+      carousel.style.transform = "translateX(" + translateX + ")";
+    }
+
+    function showNextSlide() {
+      currentIndex++;
+      if (currentIndex >= carouselItems.length) {
+        currentIndex = 0;
+      }
+      showSlide(currentIndex);
+    }
+
+    // Auto slide every 3 seconds
+    setInterval(showNextSlide, 3000);
+  </script>
+</body>
+</html>

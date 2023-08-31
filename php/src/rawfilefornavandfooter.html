@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Mukta&family=Orbitron:wght@700&family=Playfair:wght@600&family=Poppins&family=Roboto&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Heat Beat-Feel the music</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@700&family=Playfair:wght@600&family=Poppins&display=swap');
+
+        * {
+            font-family: 'Anton', sans-serif;
+            font-family: 'Mukta', sans-serif;
+            font-family: 'Orbitron', sans-serif;
+            font-family: 'Playfair', serif;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #000000, #242323e9);
+          
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #202020;
+            padding: 10px 0;
+            z-index: 999;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            box-shadow: 3px 3px 20px 0px black;
+
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+
+
+        }
+
+        #navbar li {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+
+        #navbar li:nth-child(1) {
+            margin-left: 90px;
+        }
+
+        #navbar li:nth-child(2) {
+            margin-left: 30px;
+        }
+
+        #navbar li:nth-child(3) {
+            margin-left: 60px;
+        }
+
+        #navbar li:nth-child(4) {
+            margin-left: 30px;
+        }
+
+        #navbar li:nth-child(5) {
+            margin-left: 170px;
+        }
+
+        #navbar li:nth-child(6) {
+            margin-left: 60px;
+        }
+
+        #navbar a {
+            text-decoration: none;
+            color: #fef2f2;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* #navbar a:hover {
+            background-color: #333;
+            color: #fff;
+        } */
+
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-form input[type="text"] {
+            padding: 10px;
+            border: 0px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        .search-form button[type="submit"] {
+            padding: 8px 12px;
+            background-color: #686565;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .logo {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            /* Makes the border circular */
+            border: 2px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .logo:hover {
+            border-color: #7606e7;
+            cursor: pointer;
+        }
+
+        .material-symbols-outlined {
+            color: white;
+            font-size: 30px;
+        }
+
+        .premium {
+            background-color: rgb(255, 255, 255);
+            color: rgb(4, 4, 4);
+            width: 200px;
+            border-radius: 40px / 80px;
+            box-shadow: 2px 2px 4px 2px rgb(72, 67, 67);
+        }
+
+        .premium:hover {
+            box-shadow: 2px 2px 4px 2px rgb(83, 98, 59);
+        }
+
+        .container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .card-wrapper {
+            white-space: nowrap;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background-color: transparent;
+        }
+
+        .card {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            margin-right: 30px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+        }
+
+        .card:hover {
+            cursor: pointer;
+
+        }
+
+        .card-image {
+            height: 198px;
+            background-position: center;
+            background-size: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: relative;
+        }
+
+        .card-image:hover {
+            opacity: 0.9;
+        }
+
+        .card-heading {
+            margin: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .breadcrumb {
+            width: 200px;
+            height: 50px;
+            background-color: transparent;
+            margin-left: 30px;
+            display: flex;
+
+        }
+
+        .material-symbols-outlined {
+            background-color: black;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 3px;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #282727;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 200px;
+            padding: 10px;
+            border-radius: 6%;
+        }
+
+        .musicoftheday {
+            background-color: #5b5959;
+            height: 50px;
+            margin-bottom: 20px;
+            border-radius: 6%;
+        }
+
+        .musicoftheday:hover {
+            cursor: pointer;
+        }
+
+        .imgs {
+            display: flex;
+            object-fit: cover;
+            height: 50px;
+            width: 40px;
+        }
+
+        .two {
+            display: flex;
+            object-fit: cover;
+            height: 50px;
+            width: 70px;
+        }
+
+        .three {
+            width: auto;
+            color: white;
+        }
+
+        .podcast {
+            background-color: #5b5959;
+            height: 50px;
+            border-radius: 6%;
+        }
+
+        .podcast:hover {
+            cursor: pointer;
+        }
+
+        .pspan {
+            color: white;
+            font-size: 20px;
+        }
+
+        .top {
+            display: flex;
+
+        }
+
+        .carousel {
+            width: 800px;
+            height: 300px;
+        }
+
+        .auto {
+            width: 800px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 250px;
+            margin-top: -80px;
+           
+        }
+#carouselExampleIndicators{
+    display: flex;
+    object-fit:cover;
+}
+        .recently {
+            height: 320px;
+            /* background-color: #ef0101; */
+        }
+
+
+        .row1 {
+            height: 100px;
+            /* background-color: #7606e7; */
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .one {
+            width: 250px;
+            height: 50px;
+            background-color: #5b5959;
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+            border-radius: 7%;
+        }
+
+        .recentimg {
+            height: 100%;
+            width: 100%;
+        }
+
+        .sidehead {
+            color: white;
+            margin-left: 40px;
+
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            display: none;
+           
+            color: rgba(166, 157, 157, 0.849);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        .scroll-to-top:hover {
+            /* background-color: #706969; */
+        }
+
+        .scroll-to-top.show {
+            display: block;
+        }
+        .arrow:hover{
+            color:rgb(90, 89, 91);
+        }
+
+
+  
+
+a {
+  text-decoration: none;
+}
+
+footer{
+    background-color: #272727;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 30px;
+    margin-top: auto;
+}
+
+footer li{
+    list-style: none;
+    margin: 10px;
+    display: inline-block;
+}
+
+.icons a{
+    background: #52527a;
+    color: #272727;
+    padding: 14px;
+    font-size: 20px;
+    border-radius: 100%;
+    display: flex;
+}
+.icons a:hover{
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+.menu a{
+    color: #ffffff;
+    text-transform: capitalize;
+}
+.menu a:hover{
+    color: #52527a;
+    transition: 0.5s;
+}
+
+.footer-copyright{
+    background-color:#52527a;
+    color: #ffffff;
+    padding: 15px;
+    margin-top: 30px;
+    text-transform: capitalize;
+}
+
+.footer-copyright p{
+    margin-bottom: 0px;
+}
+
+.lin{
+    background-color: rgb(163, 159, 159);
+}
+.active{
+    background-color: rgb(99, 96, 96);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <nav id="navbar">
+        <ul>
+            <li><img src="logo.png" alt="Heat Beat" class="logo"></li>
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#about">Library</a></li>
+            <li>
+                <form class="search-form" action="/search" method="GET">
+                    <input type="text" name="query" placeholder="Search songs,artists,albums" />
+                    <button type="submit">Search </button>
+                </form>
+            </li>
+            <li><a href="#contact">
+                    <div class="premium">Explore premium</div>
+                </a></li>
+            <li><span class="material-symbols-outlined">
+                    person
+                </span></li>
+        </ul>
+    </nav>
+
+
+    <div class="waste" style="height:100px;"></div>
+
+
+    <br>
+    <div class="breadcrumb">
+        <div id="backButton">
+            <span class="material-symbols-outlined">
+                chevron_left
+            </span> &nbsp;
+        </div>
+        <div id="forwardButton">
+            <span class="material-symbols-outlined">
+                chevron_right
+            </span>
+        </div>
+    </div>
+
+    <br>
+Cupidatat eu exercitation qui amet labore consequat irure tempor consectetur adipisicing. Ullamco do pariatur eu irure aute labore anim consequat incididunt eu reprehenderit. Nostrud minim consectetur deserunt laborum Lorem elit laborum fugiat cupidatat quis proident. Do elit occaecat proident Lorem qui pariatur ut deserunt cupidatat quis eu ea esse laboris. Deserunt nostrud occaecat deserunt eu exercitation pariatur et est ea velit mollit ut. Nostrud cillum laboris duis nostrud proident.
+
+Quis commodo exercitation excepteur tempor excepteur eu. Ipsum voluptate occaecat elit ad irure cupidatat dolore consequat. Fugiat laborum nulla duis excepteur sint sunt ut duis. Ea deserunt ex tempor sunt proident ullamco velit nostrud adipisicing sunt anim. Magna dolor excepteur pariatur consectetur sunt. Reprehenderit Lorem laboris excepteur duis excepteur dolor voluptate. Irure nostrud pariatur dolore non cupidatat velit occaecat laborum.
+
+Ad consequat do esse adipisicing mollit occaecat adipisicing labore exercitation voluptate officia. Mollit ex in in sunt eu sit cupidatat est minim. Cillum eiusmod officia in sint reprehenderit aliqua elit do eu anim ad id. Elit et fugiat cupidatat Lorem quis velit ea eu. Enim sint aute deserunt laborum tempor adipisicing qui ex est non nostrud quis. Aliquip nostrud non minim aliqua consectetur. Sunt voluptate enim quis adipisicing ipsum sit incididunt excepteur.
+
+Ipsum sunt ullamco dolore ea aliquip velit eiusmod sint aliqua. Velit excepteur tempor ut nulla. Velit amet nostrud magna sit cupidatat labore dolore. Aliqua culpa eiusmod reprehenderit labore ullamco. Aliquip duis amet laboris cillum qui tempor amet. Do commodo sit nisi sint Lorem quis dolor aute do sit.
+
+Lorem aliquip est velit pariatur velit velit laborum adipisicing sit aute enim voluptate laboris incididunt. Enim non aliqua ut proident irure elit qui commodo magna sint culpa. Minim consequat nulla sit nisi adipisicing ex.
+
+Cillum do amet veniam reprehenderit est deserunt do in sit. Incididunt sit ad sint deserunt et cillum qui nulla culpa amet enim tempor nulla. Duis ullamco eu minim cupidatat. Fugiat irure magna mollit Lorem amet. Aute nostrud duis Lorem qui magna sunt aute sint exercitation incididunt. Occaecat tempor laborum qui ut irure officia do ullamco est. Reprehenderit exercitation sint ad Lorem cillum consequat qui veniam eiusmod excepteur.
+
+Pariatur ut sit occaecat tempor. Aliqua id amet adipisicing eiusmod proident et reprehenderit laborum nulla occaecat. Do eiusmod exercitation elit eiusmod. Aliqua tempor cupidatat irure laborum mollit do magna id esse quis.
+
+Proident laboris eu duis voluptate sint culpa culpa ut sunt aute tempor in. Laborum sint qui mollit irure elit enim ex ut cillum. Cupidatat velit aliquip reprehenderit ut elit consequat adipisicing tempor velit culpa nostrud. Elit magna nisi nostrud nulla do magna anim eiusmod minim aute nisi dolor. Ipsum nostrud ad irure proident laborum culpa.
+
+Culpa nostrud amet do est voluptate dolor occaecat et est enim. Pariatur tempor sunt sunt eu deserunt consequat. Id fugiat eu eiusmod ex sunt quis ut laborum Lorem cillum. Eiusmod ullamco nulla nisi eiusmod ipsum incididunt culpa. Adipisicing magna nulla minim ipsum. Enim aliqua adipisicing anim nisi sint velit commodo in aliqua sunt do nulla labore fugiat.
+
+Laborum veniam commodo id sunt anim est sit sunt duis velit minim aliquip eiusmod ea. Labore exercitation laborum dolor non tempor cupidatat dolore eu ex. Aliqua ad cillum proident laborum aliqua irure reprehenderit anim consectetur fugiat aliqua. Ut ullamco reprehenderit pariatur sit fugiat sint officia culpa id Lorem duis culpa. Elit cillum amet dolor ea velit Lorem laboris occaecat do ullamco laborum ipsum. Deserunt irure nulla culpa nisi irure amet velit nostrud. Nisi ea sit officia proident veniam culpa sunt incididunt laborum aute cillum cillum magna.
+
+
+    <br> <br>
+
+    <br><br><br>
+
+    <a href="#" class="scroll-to-top"><span class=" material-symbols-outlined arrow" title="Move to top">arrow_upward</span></a>
+<br>
+<hr class="lin"><br>
+   
+
+<footer>
+    <ul class="icons">
+        <li><a href="#"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+    </ul>
+    <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Partners</a></li>
+        
+            <li><a href="#">Contact Us</a></li>
+    </ul>
+        <div class="footer-copyright">
+            <p>Copyright @ 2023 All Rights Reserved.</p>
+        </div>
+</footer>
+
+
+
+
+
+
+
+
+
+    <script>
+
+        window.addEventListener('scroll', function() {
+          var scrollPosition = window.pageYOffset;
+          var scrollButton = document.querySelector('.scroll-to-top');
+          
+          if (scrollPosition > 200) {
+            scrollButton.classList.add('show');
+          } else {
+            scrollButton.classList.remove('show');
+          }
+        });
+        
+        document.querySelector('.scroll-to-top').addEventListener('click', function(event) {
+          event.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        
+        
+        </script>
+    <script>
+        // breadcrumb
+        const backButton = document.getElementById("backButton");
+        const forwardButton = document.getElementById("forwardButton");
+
+        // Go back to the previous page
+        backButton.addEventListener("click", function () {
+            history.back();
+        });
+
+        // Go forward to the next page
+        forwardButton.addEventListener("click", function () {
+            history.forward();
+        });
+
+    </script>
+    <script>
+        // carousel
+        const carouselImages = document.querySelectorAll('.carousel img');
+        let currentImageIndex = 0;
+
+        function showNextImage() {
+            const currentImage = carouselImages[currentImageIndex];
+            currentImage.classList.remove('active');
+            currentImage.classList.add('slide-in');
+
+            currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+
+            const nextImage = carouselImages[currentImageIndex];
+            nextImage.classList.add('active');
+            nextImage.classList.remove('slide-in');
+        }
+
+        setInterval(showNextImage, 3000); // Change the duration (in milliseconds) as desired
+
+
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

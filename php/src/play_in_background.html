@@ -1,0 +1,30 @@
+<!-- Modify your HTML -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Audio Playback</title>
+</head>
+<body>
+    <h1>Background Audio Playback</h1>
+    
+    <!-- Play in Background button -->
+    <button id="playInBackground">Play in Background</button>
+
+    <script>
+        document.getElementById('playInBackground').addEventListener('click', async () => {
+            if ('serviceWorker' in navigator) {
+                // Register the service worker
+                const registration = await navigator.serviceWorker.register('service-worker.js');
+                
+                // Send the song_id to the service worker via Broadcast Channel
+                const songId = 'your_song_id'; // Replace with the actual song ID
+                const channel = new BroadcastChannel('background-audio-channel');
+                channel.postMessage({ playAudio: true, songId });
+            }
+        });
+    </script>
+</body>
+</html>

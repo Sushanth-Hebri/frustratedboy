@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #canvas {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    audio {
+      display: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      var analyser;
+      var audioContext;
+      var audioSource;
+
+      // Create the audio element
+      var audio = new Audio();
+      audio.src = "1.mp3"; // Replace with the URL of your desired audio file
+      audio.crossOrigin = "anonymous";
+      audio.controls = true;
+      audio.style.display = "none";
+      document.body.appendChild(audio);
+
+      // Create the audio context and analyzer
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioContext.createAnalyser();
+      audioSource = audioContext.createMediaElementSource(audio);
+      audioSource.connect(analyser);
+      analyser.connect(audioContext.destination);
+
+      analyser.fftSize = 256;
+
+      var bufferLength = analyser.frequencyBinCount;
+      var dataArray = new Uint8Array(bufferLength);
+
+      function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        analyser.getByteFrequencyData(dataArray);
+
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        var barWidth = (canvas.width / bufferLength) * 2.5;
+        var x = 0;
+
+        for (var i = 0; i < bufferLength; i++) {
+          var barHeight = dataArray[i];
+
+          var r = barHeight + (25 * (i / bufferLength));
+          var g = 250 * (i / bufferLength);
+          var b = 50;
+
+          ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+          ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+
+          x += barWidth + 1;
+        }
+      }
+
+      // Start audio playback and rendering
+      audio.play();
+      renderFrame();
+    };
+  </script>
+</body>
+</html>

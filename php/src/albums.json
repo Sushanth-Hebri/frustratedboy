@@ -1,0 +1,37 @@
+[
+    {
+        "album_id": 31,
+        "description": "Hottest songs served here cover - bahubali 2",
+        "likes": 1654344,
+        "total_songs": 30,
+        "play_hour": 3
+    },
+    {
+        "album_id": 44,
+        "description": "Best Hot Hits",
+        "likes": 1200345,
+        "total_songs": 25,
+        "play_hour": 2.5
+    },
+    {
+        "album_id": 1,
+        "description": "Tune Inida - Trending now",
+        "likes": 987654,
+        "total_songs": 50,
+        "play_hour": 4.5
+    },
+    {
+        "album_id": 3,
+        "description": "Kannada hit songs",
+        "likes": 752134,
+        "total_songs": 15,
+        "play_hour": 1.7
+    },
+    {
+        "album_id": 4,
+        "description": "Hindi hit songs",
+        "likes": 752134,
+        "total_songs": 15,
+        "play_hour": 1.7
+    }
+]
