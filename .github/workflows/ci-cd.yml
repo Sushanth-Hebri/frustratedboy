@@ -15,7 +15,7 @@ jobs:
 
       - name: Set up Docker
         run: |
-          cd php/src  # Navigate to the directory containing your Dockerfile
+          cd php  # Navigate to the directory containing your Dockerfile
           docker build -t frustratedboy-php-apache-environment .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker tag frustratedboy-php-apache-environment ${{ secrets.DOCKER_USERNAME }}/frustratedboy-php-apache-environment
