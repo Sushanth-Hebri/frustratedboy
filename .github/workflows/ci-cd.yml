@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - master  # Change this to "main" if that's your default branch
 
 jobs:
   build:
@@ -22,3 +22,4 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          NODE_VERSION: 14  # Specify the Node.js version here to suppress the warning
