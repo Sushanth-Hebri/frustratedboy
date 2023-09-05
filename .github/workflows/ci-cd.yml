@@ -20,6 +20,9 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker tag frustratedboy-php-apache-environment ${{ secrets.DOCKER_USERNAME }}/frustratedboy-php-apache-environment
           docker push ${{ secrets.DOCKER_USERNAME }}/frustratedboy-php-apache-environment
+          with:
+            context: "{{defaultContext}}"
+            push: true
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
