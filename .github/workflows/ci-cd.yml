@@ -1,26 +1,33 @@
-name: CI/CD Pipeline
+name: Publish Docker image
 
 on:
   push:
-    branches:
-      - master  # Change this to "main" if that's your default branch
+    branches: ['master']
 
 jobs:
-  build:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Docker
-        run: |
-          cd php  # Navigate to the directory containing your Dockerfile
-          docker build -t frustratedboy-php-apache-environment .
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker tag frustratedboy-php-apache-environment ${{ secrets.DOCKER_USERNAME }}/frustratedboy-php-apache-environment
-          docker push ${{ secrets.DOCKER_USERNAME }}/frustratedboy-php-apache-environment
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          NODE_VERSION: 16  # Specify the Node.js version here to suppress the warning
+      - name: Check out the repo
+        uses: actions/checkout@v3
+     
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+     
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: frustratedboy-php-apache-environment
+     
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: ./php
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
