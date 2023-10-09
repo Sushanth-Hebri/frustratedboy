@@ -48,7 +48,9 @@ $dbname = "web_player";
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <meta charset="UTF-8">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Cinzel:wght@700&family=Dela+Gothic+One&family=EB+Garamond:ital,wght@1,500&family=Exo+2:wght@500&family=Lora&family=Mukta&family=Onest:wght@500&family=Orbitron:wght@700&family=Pacifico&family=Philosopher:wght@700&family=Playfair:wght@600&family=Poppins&family=Roboto&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 
 
     <title>Heat Beat-Feel the music</title>
@@ -594,6 +596,32 @@ font-size: 16px;
 color: white;
 }
 
+
+
+.dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style the dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            width: 100%;
+            border: 1px solid #ddd;
+            z-index: 1;
+
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        /* Style the dropdown items */
+        .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
 .dropdown-menu {
 display: none;
 position: absolute;
@@ -807,7 +835,17 @@ background-color: rgba(65, 65, 65, 0.926);
     flex-direction:row;
     gap:10px;
 } 
-
+.achedin{
+    height:60px;
+    width: auto;
+color:white;
+    margin-top: 100px;
+    font-family: 'AR One Sans', sans-serif;
+    font-size:10px;
+}
+.aga{
+    color:white;
+}
     </style>
 </head>
 
@@ -819,12 +857,22 @@ background-color: rgba(65, 65, 65, 0.926);
             <li class="active"><a href="Home.php">Home</a></li>
             <li><a href="library.php">Library</a></li>
             <li>
-                <form class="search-form" action="/search" method="GET">
-                    <!-- <input type="text" name="query" placeholder="Search songs,artists,albums" /> -->
-                    <input type="text" name="query" placeholder="<?php echo $query; ?>" />
 
-                    <button type="submit">Search </button>
+
+
+            <form class="search-form" action="search.php" method="GET">
+                    <div class="dropdown" id="dropdownContainer">
+                        <input type="text" name="query" id="searchInput" required placeholder="Search songs" oninput="showDropdown()">
+                        <div class="dropdown-content" id="dropdownContent">
+                            <!-- Dropdown items will be populated here -->
+                        </div>
+                    </div>
+                    <button type="submit">Search</button>
                 </form>
+
+
+
+
             </li>
             <li><a href="#contact">
                     <div class="premium">Explore premium</div>
@@ -856,9 +904,11 @@ background-color: rgba(65, 65, 65, 0.926);
     <br>
     <audio id="audioPlayer" onended="playNextSong()"></audio>
 
-   
+   <div class="achedin">
     <?php if (isset($query)) : ?>
     <h1>Songs and Artists Related to "<?php echo $query; ?>"</h1>
+   </div>
+
     <?php if (count($songs) > 0) : ?>
         <div class="container">
             <?php foreach ($songs as $song) : ?>
@@ -899,7 +949,7 @@ echo '
             
         </div>
     <?php else : ?>
-        <p>No related songs found.</p>
+        <p class="aga">No related songs found.</p>
         <div class="notbyyou">
         <div class="red-box"></div>
                 <div class="red-box"></div>
@@ -1401,7 +1451,59 @@ clickedDiv.closest('.outer[data-song-id="' + songId + '"]').classList.add('activ
         });
     </script>
 
+<script>
+        let timer;
 
+        function showDropdown() {
+            clearTimeout(timer);
+
+            const input = document.getElementById("searchInput");
+            const dropdown = document.getElementById("dropdownContent");
+
+            // Clear previous dropdown items
+            dropdown.innerHTML = "";
+
+            // Get the current input value
+            const inputValue = input.value.trim();
+
+            // Fetch matching songs from the server/database
+            if (inputValue.length > 0) {
+                timer = setTimeout(() => {
+                    fetch(`search_songs.php?query=${inputValue}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            data.forEach(song => {
+                                const item = document.createElement("div");
+                                item.classList.add("dropdown-item");
+                                item.textContent = song.title;
+                                item.addEventListener("click", () => {
+                                    input.value = song.title;
+                                    dropdown.innerHTML = ""; // Clear dropdown after selection
+                                });
+                                dropdown.appendChild(item);
+                            });
+                        })
+                        .catch(error => console.error(error));
+
+                    dropdown.style.display = "block";
+                }, 300); // Add a delay to avoid rapid requests while typing
+            } else {
+                dropdown.style.display = "none";
+            }
+        }
+    </script>
+
+
+<script>
+    // Close dropdown when clicking outside of it
+    document.addEventListener("click", function(event) {
+        const dropdownContainer = document.getElementById("dropdownContainer");
+        if (!dropdownContainer.contains(event.target)) {
+            const dropdown = document.getElementById("dropdownContent");
+            dropdown.style.display = "none";
+        }
+    });
+</script>
 
 
 

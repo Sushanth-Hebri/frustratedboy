@@ -15,7 +15,7 @@ echo 'hey';
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head><link rel="icon" href="logo.png" type="icon/x-image">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -28,6 +28,7 @@ echo 'hey';
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
 
     <title>Heat Beat-Feel the music</title>
+    <link rel="icon" href="logo.png" type="icon/x-image">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Mukta&family=Orbitron:wght@700&family=Playfair:wght@600&family=Poppins&family=Roboto&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@700&family=Playfair:wght@600&family=Poppins&display=swap');

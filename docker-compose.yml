@@ -18,8 +18,8 @@ services:
         image: mysql
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: your_root_password_here
-            MYSQL_DATABASE: your_database_name_here
+            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: web_player
             MYSQL_USER: your_mysql_user_here
             MYSQL_PASSWORD: your_mysql_password_here
         ports:

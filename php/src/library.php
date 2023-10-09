@@ -52,11 +52,12 @@ if (!$result) {
 <html>
 
 <head>
-
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script> -->
     <title>Library</title>
+    <link rel="icon" href="logo.png" type="icon/x-image">
     <!-- Add your CSS stylesheets and other necessary scripts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@700&family=Playfair:wght@600&family=Poppins&display=swap');
@@ -775,6 +776,7 @@ if (!$result) {
         .success-message.show {
             bottom: 100px;
         }
+        svg{font-weight:bold;max-width:800px;height:100%;}
     </style>
 </head>
 
@@ -822,7 +824,28 @@ if (!$result) {
     <br> <br><br>
     <div class="out">
         <div class="yourlibrary">
-            Your Library
+            <!-- Your Library -->
+            <svg viewBox="0 0 100 20">
+                    <defs>
+                        <linearGradient id="gradient">
+                            <stop color="#FF3D00"/>
+                        </linearGradient>
+                        <pattern id="wave" x="0" y="-0.5" width="200%" height="100%" patternUnits="userSpaceOnUse">
+                            <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)"> 
+                                <animateTransform
+                                    attributeName="transform"
+                                    begin="0s"
+                                    dur="1.5s"
+                                    type="translate"
+                                    from="0,0"
+                                    to="40,0"
+                                    repeatCount="indefinite" />
+                            </path>
+                        </pattern>
+                    </defs>
+                    <text text-anchor="middle" x="50" y="15" font-size="15" fill="white" fill-opacity="0.1"></text>
+                    <text text-anchor="middle" x="50" y="15" font-size="10" fill="url(#wave)"  fill-opacity="1">YOUR LIBRARY</text>
+                </svg>
         </div>
 
 

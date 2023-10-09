@@ -31,7 +31,9 @@ else {
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <meta charset="UTF-8">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dela+Gothic+One&family=EB+Garamond:ital,wght@1,500&family=Exo+2:wght@500&family=Lora&family=Mukta&family=Onest:wght@500&family=Orbitron:wght@700&family=Pacifico&family=Philosopher:wght@700&family=Playfair:wght@600&family=Poppins&family=Roboto&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 <link rel="icon" href="logo.png" type="icon/x-image">
 
 
@@ -204,6 +206,9 @@ else {
             box-shadow: 4px 4px 3px 2px black;
             border-radius: 9%;
         }
+        .card:hover{
+            box-shadow: 2px 2px 2px 1px #5f1ea8;
+        }
 
         .cardimage {
             height: 200px;
@@ -349,20 +354,27 @@ else {
             margin-left: 30px;
             border-radius: 7px;
         }
+        .one:hover{
+            background-color: #43465e;
+            box-shadow: 2px 2px 2px 1px #5f1ea8;
+            border-radius: 10px;
+        }
 
         .two {
             display: flex;
             object-fit: cover;
             height: 70px;
             width: 70px;
-        }
+        } 
+       
 
         .three {
-            width: auto;
+            width: 230px;
             color: white;
             font-size: 23px;
             display: flex;
             align-items: center;
+            text-align: center;
         }
 
         .recentimg {
@@ -374,7 +386,7 @@ else {
             color: white;
             margin-left: 40px;
             font-size: 23px;
-
+            font-family: 'Onest', sans-serif;
         }
 
         .scroll-to-top {
@@ -469,6 +481,7 @@ else {
 
         .active {
             background-color: rgb(99, 96, 96);
+            /* width:70px; */
 
         }
 
@@ -531,9 +544,11 @@ else {
                     <input type="text" name="query" placeholder="Search songs,artists,albums" />
                     <button type="submit">Search </button>
                 </form> -->
+
+
                 <form class="search-form" action="search.php" method="GET">
                     <div class="dropdown" id="dropdownContainer">
-                        <input type="text" name="query" id="searchInput" required placeholder="Search songs" oninput="showDropdown()">
+                        <input type="text" name="query" id="searchInput" required placeholder="Search songs" oninput="showDropdown()" autocomplete="off">
                         <div class="dropdown-content" id="dropdownContent">
                             <!-- Dropdown items will be populated here -->
                         </div>
@@ -614,7 +629,7 @@ else {
 
     <br> <br>
 
-    <div class="recently">
+    <!-- <div class="recently">
         <h4 class="sidehead"> Recently played</h4>
         <div class="row1">
             <div class="one">
@@ -677,8 +692,194 @@ else {
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <div class="recently">
+    <h4 class="sidehead">Recently played</h4>
+   
+</div>
 
+
+<script>
+
+// Sample mapping between song IDs and names (replace with your actual data)
+const songNameMapping = {
+    '1': 'Agar Tum Saath ho',
+    '2': 'Rockabye',
+    '3': 'Shiv_Tandav',
+    '4': 'Dynamite',
+    '5': 'Pink Venom',
+    '6': 'Kesariya',
+    '7': 'Still loving you',
+    '8': 'Ringa Ringa',
+    '9': 'Kagadada doniyalli',
+    '10': 'Hum Tere Bin',
+    '11': 'Kanunna kalyanam',
+    '12': 'Kadhale Kadhale',
+    '13': 'Bali bali ra bali',
+    '14': 'Katheyonda helide',
+    '15': 'Naatu Naatu',
+    '16': 'Mastaru Mastaru',
+    '17': 'Sariyagi nenapide nanage',
+    '18': 'Ambari oorinalli',
+    '19': 'D J tillu',
+    '20': 'Paravashanadenu',
+    '21': 'Badava Rascal',
+    '22': 'aaj sajeya',
+    '23': 'asal mein',
+    '24': 'Bhool Bulaiyaa 2',
+    '25': 'Bye',
+    '26': 'Tu Aake Dekhle',
+    '27': 'Chaand Baaliyan',
+    '28': 'Maan meri Jaan',
+    '29': 'Character Dheela 2.0',
+    '30': 'Deewani',
+    '31': 'Desperado',
+    '32': 'Ghodey Pe Sawar',
+    '33': 'kavalaa..',
+    '34': 'Jai shri Ram',
+    '35': 'Mamatala talli',
+    '36': 'Jeva nadhi',
+    '37': 'Dhirava',
+    '38': 'pacha Bottasi',
+    '39': 'Manohari',
+    '40': 'Galiye',
+    '41': 'Inkem Inkem',
+    '42': 'Priyathama Priyatham',
+    '43': 'Nithalli Nillalare',
+    '44': 'Saluthillave',
+    '45': 'Yaare Yaare',
+    '46': 'Yenti Yenti',
+    '47': 'Pal',
+    '48': 'Veeron ke Veer Aa',
+    '49': 'Theme of 3',
+    '50': 'Apudo Ipudo',
+    '51': 'Dil Ko Karaar Aaya',
+    '52': 'Arambame',
+    '53': 'Adheera',
+    '54': 'Chola Chola',
+    '55': 'Nane Oruven',
+    '56': 'Ponni Nadhi',
+    '57': 'Rise Of Shyam',
+    '58': 'Vikram',
+    '59': 'Vikramadithyan',
+    '60': 'Yarenna Sonnalum',
+    '61': 'Chiru Chiru',
+    '62': 'Gaaliye',
+    '63': 'Jeena Jeena',
+    '64': 'Madarangi',
+    '65': 'Nee Yadalo',
+    '66': 'Sadha Ninna Kannali',
+    '67': 'Thanthane ThandanThane',
+    '68': 'Tum Hi Ho',
+    '69': 'Boomi Enna Suthude',
+    '70': 'Baliye Re',
+    '71': 'Deewani Sachet',
+    '72': 'Krishna Teri Ho',
+    '73': 'Mohabbat',
+    '74': 'Pehli Baarish Mein',
+    '75': 'Danger Industry',
+    '76': 'Baarishon Ki Dhun',
+    '77': 'Sanam Aa Gaya',
+    '78': 'Pehli Pehli Baar',
+    '79': 'Mahiye Jinna',
+    '80': 'Baarish Karde',
+    '81': 'Dilbara',
+    '82':'chaleya',
+'83':'Not Ramaiya Vastavaiya'
+};
+
+// Retrieve the array of song IDs from local storage
+const songIds = JSON.parse(localStorage.getItem('songIds')) || [];
+
+// Reference to the parent container div
+const recentlyPlayedContainer = document.querySelector('.recently');
+
+// Create the first row container
+const row1Container = document.createElement('div');
+row1Container.className = 'row1';
+recentlyPlayedContainer.appendChild(row1Container);
+
+// Create the second row container
+const row2Container = document.createElement('div');
+row2Container.className = 'row1';
+recentlyPlayedContainer.appendChild(row2Container);
+
+// Sort the songIds array in descending order
+songIds.sort((a, b) => b - a);
+
+// Counter to keep track of the number of songs
+let songCount = 0;
+
+// Loop through the song IDs and create a div for each song
+songIds.forEach(songId => {
+    // Create a new div for the song with class 'one'
+    const songDiv = document.createElement('div');
+    songDiv.className = 'one';
+
+ // Set a custom data attribute to store the song_id
+ songDiv.dataset.songId = songId;
+
+// Add click event listener to the div
+songDiv.addEventListener('click', function() {
+    // Get the song_id from the custom data attribute
+    const selectedSongId = this.dataset.songId;
+
+    // Redirect to another page with the selected song_id
+    window.location.href = `singlesong-9.php?song_id=${selectedSongId}`;
+});
+
+
+
+
+
+
+
+    // Create the div with class 'two' to hold the image
+    const divTwo = document.createElement('div');
+    divTwo.className = 'two';
+
+    // Create the image element with class 'recentimg'
+    const imgElement = document.createElement('img');
+    imgElement.className = 'recentimg';
+    imgElement.src = `${songId}.jpg`; // Assuming image filenames match the song IDs
+    imgElement.alt = '';
+
+    // Create the div with class 'three' to hold the h5 element
+    const divThree = document.createElement('div');
+    divThree.className = 'three';
+
+    // Create the h5 element for the song title
+    const h5Element = document.createElement('h5');
+
+    // Determine whether to use the song name from the beginning or end of the sorted array
+   
+        h5Element.innerHTML = `&nbsp;&nbsp;${songNameMapping[songId]}`; // Set the song name with &nbsp; before the text
+   
+
+
+
+    // Append the image to div 'two' and h5 element to div 'three'
+    divTwo.appendChild(imgElement);
+    divThree.appendChild(h5Element);
+
+    // Append div 'two' and div 'three' to the song div 'one'
+    songDiv.appendChild(divTwo);
+    songDiv.appendChild(divThree);
+
+    // Increment the song count
+    songCount++;
+
+    // Append the song div to the appropriate row
+    if (songCount <= 4) {
+        row2Container.appendChild(songDiv); // First 4 songs go to the second row
+    } else {
+        row1Container.appendChild(songDiv); // Last 4 songs go to the first row
+    }
+});
+
+
+
+</script>
 
 
 
@@ -693,16 +894,16 @@ else {
 
 
             <div class="card">
-                <div class="cardimage" value="6" onclick="toplaysong(this.getAttribute('value'))"><img src="6.jpg" alt="6"></div>
-                <div class="cardname">Kesariya</div>
+                <div class="cardimage" value="82" onclick="toplaysong(this.getAttribute('value'))"><img src="82.jpg" alt="6"></div>
+                <div class="cardname">Chaleya</div>
             </div>
             <div class="card">
                 <div class="cardimage" value="5" onclick="toplaysong(this.getAttribute('value'))"><img src="5.jpg" alt="5"></div>
                 <div class="cardname">Pink venom</div>
             </div>
             <div class="card">
-                <div class="cardimage" value="2" onclick="toplaysong(this.getAttribute('value'))"><img src="2.jpg" alt="2"></div>
-                <div class="cardname">RockeyBye</div>
+                <div class="cardimage" value="83" onclick="toplaysong(this.getAttribute('value'))"><img src="83.jpg" alt="2"></div>
+                <div class="cardname">Not Ramaiya Vastavaiya</div>
             </div>
             <div class="card">
                 <div class="cardimage" value="15" onclick="toplaysong(this.getAttribute('value'))"><img src="15.jpg" alt="15"></div>

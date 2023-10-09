@@ -117,6 +117,7 @@ header("Pragma: no-cache");
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <meta charset="UTF-8">
     <title>User Profile</title>
+    <link rel="icon" href="logo.png" type="icon/x-image">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@700&family=Playfair:wght@600&family=Poppins&display=swap');
 
@@ -527,10 +528,12 @@ header("Pragma: no-cache");
         }
 
         .active {
-            background-color: rgb(99, 96, 96);
+            background-color: black;
         }
 
-
+.person{
+    background-color: black;
+}
 
         .outer {
             width: 1500px;
@@ -732,12 +735,17 @@ border: none;
     display:flex;
     flex-direction: row;
     gap:30px;
+} 
+
+
+.lis{
+    padding: 5px;
 }
 .lis:hover{
-    background-color: red;
-         
+    background-color: white;
+         color:black;
          cursor: pointer;
-       
+       padding: 5px;
          border-radius: 10%;
          width:100px;
 }
@@ -761,7 +769,7 @@ border: none;
                     <div class="premium">Explore premium</div>
                 </a></li>
             <a href="profilehtml.php">
-                <li class="active"><span class="material-symbols-outlined">
+                <li class="act"><span class="material-symbols-outlined person">
                         person
                     </span></li>
             </a>

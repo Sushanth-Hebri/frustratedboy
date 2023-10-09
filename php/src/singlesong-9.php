@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>singlesongplayer</title>
+  <link rel="icon" href="logo.png" type="icon/x-image">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Vibes&display=swap');
@@ -276,7 +277,15 @@
 .extranav a:hover{
   background-color: #1f1f1f;
 }
-    
+  
+video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Place the video behind other content */
+        }  
    
 
   </style>
@@ -298,6 +307,16 @@
     </div>
     <div class="extranav"><a href="Home.php">Home</a></div>
   </div>
+
+
+  <!-- <video autoplay muted loop poster="poster-image.jpg">
+        <source src="Jawan_ Not Ramaiya Vastavaiya.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> -->
+
+
+
+
 
 
 <canvas id="canvas"></canvas>
@@ -336,12 +355,31 @@
 
   <script>
     // Get the song_id from the URL parameter
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const songId = urlParams.get('song_id');
-    console.log(songId);
-    console.log(songId);
-    console.log(songId);
+  // Get the songId from the URL query parameter
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const songId = urlParams.get('song_id');
+console.log(songId);
+
+// Retrieve the existing array from local storage (or create an empty one)
+let songIdsArray = JSON.parse(localStorage.getItem('songIds')) || [];
+
+// Check if the songId already exists in the array
+if (!songIdsArray.includes(songId)) {
+    // Add the songId to the array
+    songIdsArray.push(songId);
+
+    // Ensure the array does not exceed a maximum size of 8
+    if (songIdsArray.length > 8) {
+        songIdsArray.shift(); // Remove the oldest song if the array is too long
+    }
+
+    // Save the updated array back to local storage
+    localStorage.setItem('songIds', JSON.stringify(songIdsArray));
+}
+
+console.log(songIdsArray); // Log the updated array
+
     // Function to fetch song details from the XAMPP server
     function fetchSongDetails(songId) {
       // Replace with your XAMPP server configuration
@@ -652,6 +690,19 @@ fetch(`${serverUrl}/songdetailsbysongid.php?song_id=${songId}`)
 </script>
 
 
+<!-- keyboard shortcut to play and pause press space bar -->
+<script>
+  // Event listener for the spacebar key to call the toggle function
+document.addEventListener('keydown', function(event) {
+    if (event.key === ' ' || event.keyCode === 32) {
+        // Prevent the default spacebar behavior (e.g., scrolling)
+        event.preventDefault();
+        // startButton.click(); 
+        toggleState();
+        // Call your toggle function
+    }
+});
+</script>
 
 
 

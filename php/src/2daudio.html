@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Audio Example</title>
+</head>
+<body>
+    <h1>3D Audio Example</h1>
+    
+    <audio id="audio" controls>
+        <source src="13.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const audioElement = document.getElementById('audio');
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const audioSource = audioContext.createMediaElementSource(audioElement);
+        const listener = audioContext.listener;
+        const panner = audioContext.createPanner();
+
+        // Connect the audio source to the panner
+        audioSource.connect(panner);
+
+        // Connect the panner to the audio context's destination (speakers/headphones)
+        panner.connect(audioContext.destination);
+
+        // Set the audio context properties for spatial audio
+        listener.setPosition(0, 0, 0); // Initial listener position (center)
+        listener.setOrientation(0, 0, -1, 0, 1, 0); // Listener orientation (looking forward)
+
+        // Function to update audio position based on mouse movement
+        function updateAudioPosition(event) {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const x = (event.clientX - centerX) / centerX;
+            const y = (event.clientY - centerY) / centerY;
+
+            // Set the audio source position based on mouse movement
+            panner.setPosition(x, y, 0);
+        }
+
+        // Add mousemove event listener to update audio position
+        document.addEventListener('mousemove', updateAudioPosition);
+
+        // Add a click event listener to play the audio
+        document.addEventListener('click', () => {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume().then(() => {
+                    console.log('Audio context resumed');
+                    audioElement.play();
+                });
+            } else {
+                audioElement.play();
+            }
+        });
+    </script>
+</body>
+</html>
