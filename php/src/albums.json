@@ -1,37 +1,317 @@
 [
     {
-        "album_id": 31,
-        "description": "Hottest songs served here cover - bahubali 2",
-        "likes": 1654344,
-        "total_songs": 30,
-        "play_hour": 3
-    },
-    {
-        "album_id": 44,
-        "description": "Best Hot Hits",
-        "likes": 1200345,
-        "total_songs": 25,
-        "play_hour": 2.5
-    },
-    {
         "album_id": 1,
-        "description": "Tune Inida - Trending now",
-        "likes": 987654,
-        "total_songs": 50,
-        "play_hour": 4.5
+        "description": "Trending in India: Today's hottest hits!",
+        "likes": 189345,
+        "total_songs": 15,
+        "play_hour": 2.8
+    },
+    {
+        "album_id": 2,
+        "description": "Hot Hits: The latest chart-toppers!",
+        "likes": 156782,
+        "total_songs": 15,
+        "play_hour": 3.2
     },
     {
         "album_id": 3,
-        "description": "Kannada hit songs",
-        "likes": 752134,
+        "description": "Kannada Hits: Melodious Kannada music!",
+        "likes": 134675,
         "total_songs": 15,
-        "play_hour": 1.7
+        "play_hour": 3.7
     },
     {
         "album_id": 4,
-        "description": "Hindi hit songs",
-        "likes": 752134,
+        "description": "Hindi Hits: Bollywood's finest songs!",
+        "likes": 178932,
         "total_songs": 15,
-        "play_hour": 1.7
+        "play_hour": 3.0
+    },
+    {
+        "album_id": 5,
+        "description": "Mass Songs: High-energy tunes!",
+        "likes": 203456,
+        "total_songs": 15,
+        "play_hour": 2.5
+    },
+    {
+        "album_id": 6,
+        "description": "Romantic: Heart-melting love songs!",
+        "likes": 165432,
+        "total_songs": 15,
+        "play_hour": 3.5
+    },
+    {
+        "album_id": 7,
+        "description": "90's Hit: Nostalgic '90s hits!",
+        "likes": 195678,
+        "total_songs": 15,
+        "play_hour": 2.3
+    },
+    {
+        "album_id": 8,
+        "description": "Hindi: Diverse Hindi songs!",
+        "likes": 147890,
+        "total_songs": 15,
+        "play_hour": 3.1
+    },
+    {
+        "album_id": 9,
+        "description": "Punjabi: Bhangra beats!",
+        "likes": 172345,
+        "total_songs": 15,
+        "play_hour": 2.9
+    },
+    {
+        "album_id": 10,
+        "description": "Tamil: Soulful Tamil tunes!",
+        "likes": 159876,
+        "total_songs": 15,
+        "play_hour": 3.4
+    },
+    {
+        "album_id": 11,
+        "description": "Telugu: From classics to latest hits!",
+        "likes": 185432,
+        "total_songs": 15,
+        "play_hour": 2.7
+    },
+    {
+        "album_id": 12,
+        "description": "Pop: Pop Sensations!",
+        "likes": 208947,
+        "total_songs": 15,
+        "play_hour": 2.5
+    },
+    {
+        "album_id": 13,
+        "description": "Indie: Independent music vibes!",
+        "likes": 176512,
+        "total_songs": 15,
+        "play_hour": 3.3
+    },
+    {
+        "album_id": 14,
+        "description": "Pure Kadhal: Love songs at their best!",
+        "likes": 162345,
+        "total_songs": 15,
+        "play_hour": 3.6
+    },
+    {
+        "album_id": 15,
+        "description": "Mood: Music to match your mood!",
+        "likes": 191234,
+        "total_songs": 15,
+        "play_hour": 2.6
+    },
+    {
+        "album_id": 16,
+        "description": "Party: Get the party started!",
+        "likes": 205678,
+        "total_songs": 15,
+        "play_hour": 2.4
+    },
+    {
+        "album_id": 17,
+        "description": "Devotional: Divine tunes for the soul!",
+        "likes": 168345,
+        "total_songs": 15,
+        "play_hour": 3.4
+    },
+    {
+        "album_id": 18,
+        "description": "Decades: Hits from the past!",
+        "likes": 174567,
+        "total_songs": 15,
+        "play_hour": 3.2
+    },
+    {
+        "album_id": 19,
+        "description": "Hip-Hop: Urban beats and rhymes!",
+        "likes": 187654,
+        "total_songs": 15,
+        "play_hour": 2.8
+    },
+    {
+        "album_id": 20,
+        "description": "Chill: Relax with soothing melodies!",
+        "likes": 198765,
+        "total_songs": 15,
+        "play_hour": 2.7
+    },
+    {
+        "album_id": 21,
+        "description": "K-pop: Korean pop sensation!",
+        "likes": 194321,
+        "total_songs": 15,
+        "play_hour": 2.9
+    },
+    {
+        "album_id": 22,
+        "description": "Workout: Pump up the energy!",
+        "likes": 175432,
+        "total_songs": 15,
+        "play_hour": 3.3
+    },
+    {
+        "album_id": 23,
+        "description": "Indian Classical: Traditional melodies!",
+        "likes": 163254,
+        "total_songs": 15,
+        "play_hour": 3.6
+    },
+    {
+        "album_id": 24,
+        "description": "Instrumental: Music without lyrics!",
+        "likes": 191876,
+        "total_songs": 15,
+        "play_hour": 2.6
+    },
+    {
+        "album_id": 25,
+        "description": "New Music Hindi: Fresh Hindi hits!",
+        "likes": 199321,
+        "total_songs": 15,
+        "play_hour": 2.7
+    },
+    {
+        "album_id": 26,
+        "description": "Latest Kannada: Up-to-date Kannada melodies!",
+        "likes": 173456,
+        "total_songs": 15,
+        "play_hour": 3.1
+    },
+    {
+        "album_id": 27,
+        "description": "Latest Hindi: The latest Bollywood tracks!",
+        "likes": 183456,
+        "total_songs": 15,
+        "play_hour": 3.1
+    },
+    {
+        "album_id": 28,
+        "description": "Latest Tamil: Stay updated with Tamil hits!",
+        "likes": 161234,
+        "total_songs": 15,
+        "play_hour": 3.5
+    },
+    {
+        "album_id": 29,
+        "description": "Latest Malayalam: The latest Malayalam tunes!",
+        "likes": 176543,
+        "total_songs": 15,
+        "play_hour": 3.2
+    },
+    {
+        "album_id": 30,
+        "description": "Bollywood Brook: A journey through Bollywood!",
+        "likes": 158976,
+        "total_songs": 15,
+        "play_hour": 3.5
+    },
+    {
+        "album_id": 31,
+        "description": "Bahubali - The Beginning: Epic soundtrack of Bahubali!",
+        "likes": 204321,
+        "total_songs": 15,
+        "play_hour": 2.4
+    },
+    {
+        "album_id": 32,
+        "description": "Indie: Independent music vibes!",
+        "likes": 167432,
+        "total_songs": 15,
+        "play_hour": 3.4
+    },
+    {
+        "album_id": 33,
+        "description": "Geetha Govindam: Hit songs from the movie!",
+        "likes": 182345,
+        "total_songs": 15,
+        "play_hour": 3.1
+    },
+    {
+        "album_id": 34,
+        "description": "Arijit Singh Hits: Soulful melodies by Arijit Singh!",
+        "likes": 179765,
+        "total_songs": 15,
+        "play_hour": 2.8
+    },
+    {
+        "album_id": 35,
+        "description": "Anirudh Hits: Catchy tunes by Anirudh Ravichander!",
+        "likes": 155432,
+        "total_songs": 15,
+        "play_hour": 3.7
+    },
+    {
+        "album_id": 36,
+        "description": "Moody Mix: Music for every mood!",
+        "likes": 194567,
+        "total_songs": 15,
+        "play_hour": 2.7
+    },
+    {
+        "album_id": 37,
+        "description": "Romantic Mix: Romantic melodies for your soul!",
+        "likes": 188765,
+        "total_songs": 15,
+        "play_hour": 2.9
+    },
+    {
+        "album_id": 38,
+        "description": "Feel Good Hits: Music to lift your spirits!",
+        "likes": 175432,
+        "total_songs": 15,
+        "play_hour": 3.3
+    },
+    {
+        "album_id": 39,
+        "description": "Mass Hits: High-energy tracks to pump you up!",
+        "likes": 163278,
+        "total_songs": 15,
+        "play_hour": 3.6
+    },
+    {
+        "album_id": 40,
+        "description": "Indie-Pop: Pop music by indie artists!",
+        "likes": 186543,
+        "total_songs": 15,
+        "play_hour": 2.6
+    },
+    {
+        "album_id": 41,
+        "description": "Kannada Hits: Hit Kannada songs!",
+        "likes": 179876,
+        "total_songs": 15,
+        "play_hour": 2.8
+    },
+    {
+        "album_id": 42,
+        "description": "Hindi Hits: Chart-toppers from Bollywood!",
+        "likes": 159432,
+        "total_songs": 15,
+        "play_hour": 3.4
+    },
+    {
+        "album_id": 43,
+        "description": "Telugu and Tamil Mix: Best of Telugu and Tamil music!",
+        "likes": 192345,
+        "total_songs": 15,
+        "play_hour": 2.5
+    },
+    {
+        "album_id": 44,
+        "description": "Tamil Hit: Popular Tamil songs!",
+        "likes": 166543,
+        "total_songs": 15,
+        "play_hour": 3.5
+    },
+    {
+        "album_id": 45,
+        "description": "Telugu Hits: Top Telugu chart-busters!",
+        "likes": 176543,
+        "total_songs": 15,
+        "play_hour": 3.2
     }
 ]
